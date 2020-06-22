@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Email Sender</title>
+  </head>
+  <body>
+    <div class="container jumbotron" style="background-color: #fff;">
+      <div style="text-align: center;">
+        <h1>Email Sender Form</h1>
+      </div>
+
+      <form action="/result.html" method="post" enctype="multipart/form-data">
+        <div class="form-row">
+          <div class="col">
+            <label for="email">Email ID:</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Enter email"
+              name="email"
+              id="email"
+              value=""
+              onkeyup="EnableButton()"
+            />
+          </div>
+          <div class="col">
+            <label for="password">Password:</label>
+
+            <input
+              type="password"
+              class="form-control"
+              placeholder="Enter password"
+              name="password"
+              id="password"
+              value=""
+              onkeyup="EnableButton()"
+            />
+          </div>
+        </div>
+
+        <!-- Subject -->
+        <div class="form-group py-3">
+          <label for="subject">Subject:</label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter Subject"
+            name="subject"
+            id="subject"
+            value=""
+            onkeyup="EnableButton()"
+          />
+        </div>
+
+        <!-- Body -->
+        <div class="form-group">
+          <label for="message">Message :</label>
+          <textarea
+            class="form-control"
+            rows="5"
+            id="message"
+            value=""
+            onkeyup="EnableButton()"
+          ></textarea>
+        </div>
+
+        <div class="form-row py-3">
+          <div class="col">
+            <label for="files">Attachment :</label>
+            <input
+              type="file"
+              id="files"
+              name="files"
+              multiple
+              value=""
+              onkeyup="EnableButton()"
+            />
+          </div>
+          <div class="col">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="File Location"
+              name="location"
+              value=""
+              id="location"
+              onkeyup="EnableButton()"
+            />
+          </div>
+        </div>
+
+        <!-- Submit -->
+        <div class="form-group py-3">
+          <button
+            type="button"
+            id="clear"
+            onclick="ClearInputs()"
+            class="btn btn-warning btn-block"
+            disabled
+          >
+            Clear
+          </button>
+          <button type="button" class="btn btn-danger btn-block">
+            Cancel
+          </button>
+          <button type="submit" class="btn btn-success btn-block">
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      function ClearInputs() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var subject = document.getElementById("subject").value;
+        var message = document.getElementById("message").value;
+        var files = document.getElementById("files").value;
+        var location = document.getElementById("location").value;
+
+        if (
+          email != "" ||
+          password != "" ||
+          subject != "" ||
+          message != "" ||
+          files != "" ||
+          location != ""
+        ) {
+          document.getElementById("email").value = "";
+          document.getElementById("password").value = "";
+          document.getElementById("subject").value = "";
+          document.getElementById("message").value = "";
+          document.getElementById("files").value = "";
+          document.getElementById("location").value = "";
+        } else {
+          console.log("All blanks....");
+        }
+      }
+
+      function EnableButton() {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var subject = document.getElementById("subject").value;
+        var message = document.getElementById("message").value;
+        var files = document.getElementById("files").value;
+        var location = document.getElementById("location").value;
+
+        if (
+          email != "" ||
+          password != "" ||
+          subject != "" ||
+          message != "" ||
+          files != "" ||
+          location != ""
+        ) {
+          document.getElementById("clear").removeAttribute("disabled");
+        } else {
+          document.getElementById("clear").setAttribute("disabled", null);
+        }
+      }
+    </script>
+  </body>
+</html>
