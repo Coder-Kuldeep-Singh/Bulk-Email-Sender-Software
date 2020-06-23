@@ -7,5 +7,5 @@ import (
 func main() {
 	//setup routes
 	r := routers.SetupRouters()
-	r.Run(":4848")
+	r.Run(":1000")
 }
