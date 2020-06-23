@@ -12,6 +12,7 @@ func SetupRouters() *gin.Engine {
 	//router.LoadHTMLFiles("templates/index.tmpl")
 
 	router.GET("/", controllers.EmailController)
+	router.POST("/", controllers.EmailSenderController)
 	return router
 
 }
