@@ -25,6 +25,24 @@
         <h1>Email Sender Form</h1>
       </div>
 
+      <!-- Alert Message -->
+      <div>
+        {{if .formError}}
+        <div class="alert alert-danger">
+          <strong>{{.formError}}</strong>
+        </div>
+        {{end}}
+      </div>
+
+      <!-- Success -->
+      <div>
+        {{if .Success}}
+        <div class="alert alert-success">
+          <strong>{{.Success}}</strong>
+        </div>
+        {{end}}
+      </div>
+
       <form action="/result.html" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <!-- to send email id -->
