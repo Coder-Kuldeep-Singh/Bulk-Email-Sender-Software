@@ -43,7 +43,13 @@
         {{end}}
       </div>
 
-      <form action="/result.html" method="post" enctype="multipart/form-data">
+      <!-- <div>
+        <div class="alert alert-danger">
+          <strong id="any_blank"></strong>
+        </div>
+      </div> -->
+
+      <form action="/" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <!-- to send email id -->
           <label for="subject">To Send Email ID:</label>
@@ -51,7 +57,7 @@
             type="text"
             class="form-control"
             placeholder="Enter Subject"
-            name="sender_email"
+            name="to_email"
             id="sender_email"
             value=""
             onkeyup="EnableButton()"
@@ -65,7 +71,7 @@
               type="text"
               class="form-control"
               placeholder="Enter email"
-              name="email"
+              name="from_email"
               id="email"
               value=""
               onkeyup="EnableButton()"
@@ -108,6 +114,7 @@
             rows="5"
             id="message"
             value=""
+            name="message"
             onkeyup="EnableButton()"
           ></textarea>
         </div>
@@ -115,14 +122,7 @@
         <div class="form-row py-3">
           <div class="col">
             <label for="files">Attachment :</label>
-            <input
-              type="file"
-              id="files"
-              name="files"
-              multiple
-              value=""
-              onkeyup="EnableButton()"
-            />
+            <input type="file" id="files" name="files" multiple value="" />
           </div>
           <div class="col">
             <input
@@ -132,7 +132,6 @@
               name="location"
               value=""
               id="location"
-              onkeyup="EnableButton()"
             />
           </div>
         </div>
@@ -209,6 +208,25 @@
           document.getElementById("clear").removeAttribute("disabled");
         } else {
           document.getElementById("clear").setAttribute("disabled", null);
+        }
+      }
+
+      function checkInputsBlankOrNot() {
+        var sender_email = document.getElementById("sender_email").value;
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        var message = document.getElementById("message").value;
+        var any_blank = document.getElementById("any_blank");
+        if (sender_email == "") {
+          any_blank.innerText = "Sender Email is Blank";
+        } else if (email == "") {
+          any_blank.innerText = "From Email is Blank";
+        } else if (password == "") {
+          any_blank.innerText = "Password is Blank";
+        } else if (message == "") {
+          any_blank.innerText = "Message is Blank";
+        } else {
+          any_blank.innerText = "Maximum fields are blank";
         }
       }
     </script>
